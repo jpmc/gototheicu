@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- START GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131077352-1"></script>
+    <script type="text/javascript">
+        "use strict";
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131077352-1');
+    </script>
+    <!-- END GOOGLE ANALYTICS -->
+
     <meta charset="UTF-8">
-    <title>Go to the ICU!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GoToThe.ICU is a simple site to help you find the ICU's near you!"/>
+
+    <meta property="og:title" content="Find a hospital near You"/>
+    <meta property="og:image" content="https://example.com/img/facebooklogo.png"/>
+    <meta property="og:site_name" content="Go to the ICU!"/>
+    <meta property="og:description" content="GoToThe.ICU is a simple site to help you find the ICU's near you!"/>
+
+    <title>Find a hospital near You | Go to the ICU!</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript">
+        // iFrame Buster
+        "use strict";
+        (function(window) {
+            if (window.location !== window.top.location) {
+                window.top.location = window.location;
+            }
+        })(this);
+    </script>
 </head>
 <body>
+<h1>Find a Hospital near you!</h1>
 <iframe
-        width="600"
-        height="450"
-        frameborder="0"
-        style="border:0"
-        src="https://www.google.com/maps/embed/v1/search?q=nearest%20hospital&key=AIzaSyDuPvkaDFK823l_ZJUctg0Dema5lP99XOs"
-        allowfullscreen>
+    frameborder="0"
+    src="https://www.google.com/maps/embed/v1/search?q=nearest%20hospital&key=AIzaSyDuPvkaDFK823l_ZJUctg0Dema5lP99XOs&zoom=13"
+    allowfullscreen>
 </iframe>
 </body>
 </html>

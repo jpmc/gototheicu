@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: linear-gradient(45deg, rgba(29,30,34,1) 0%, rgba(57,63,77,1) 100%);
+    color: #d4d4dc;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    flex: 0 1 auto;
+    font-size: calc(26px + 6 * ((100vw - 320px) / 680));
+    text-align: center;
+}
+
+iframe {
+    flex: 1 1 auto;
+    min-width: 400px;
+}
+
+/* Allow iFrame to be responsive up to 1000px. Then center it at that size. */
+@media (min-width:1001px) {
+    iframe {
+        box-shadow: 0 0 10px #d4d4dc;
+        width: 1000px;
+        align-self: center;
+    }
+}
