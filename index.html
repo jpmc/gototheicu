@@ -58,11 +58,57 @@
     </script>
 </head>
 <body>
-<h1>Find a Hospital near you!</h1>
-<iframe
-    frameborder="0"
-    src="https://www.google.com/maps/embed/v1/search?q=nearest%20hospital&key=AIzaSyDuPvkaDFK823l_ZJUctg0Dema5lP99XOs&zoom=13"
-    allowfullscreen>
-</iframe>
+    <h1>Find a Hospital near you!</h1>
+    <iframe
+        frameborder="0"
+        src="https://www.google.com/maps/embed/v1/search?q=nearest%20hospital&key=AIzaSyDuPvkaDFK823l_ZJUctg0Dema5lP99XOs&zoom=13"
+        allowfullscreen>
+    </iframe>
+    <script type="text/javascript">
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(initSearch(position), handleErr(error));
+        } else {
+          // Your browser does not support GeoLocation, maybe a fallback to IP-based with a warning?
+        }
+
+        // Initialize a search based on current location for Hospitals.
+        function initSearch(position) {
+            // Build request parameters based on current location and what we want.
+            let coords = position.coords;
+            let current_loc = new google.maps.LatLng(coords.latitude, coords.longitude);
+            var request = {
+              location: current_loc,
+              radius: '50',
+              type: ['hospital']
+            };
+            // Initialize a service and submit the request.
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, buildMarkers);
+        }
+
+        // Display error to user. Location request blocked/denied/etc.
+        function handleErr(error) {
+            console.log(error.message)
+            // Alert user? Try fallback with warning?
+            // Similar to the "Browser unsupported" message.
+        }
+
+        function buildMarkers() {
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                // TODO: Handle EMPTY result sets for user, or expand radius.
+                for (var i = 0; i < results.length; i++) {
+                  var place = results[i];
+                  createMarker(results[i]);
+                }
+            }
+            else {
+                //Another error, research google error responses and adjust for user expectations.
+            }
+        }
+
+
+        // SEE: http://jsfiddle.net/svigna/JszCD/
+        // SEE: https://developers.google.com/maps/documentation/javascript/places#place_search_requests
+    </script>
 </body>
 </html>
